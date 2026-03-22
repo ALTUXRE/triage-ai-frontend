@@ -189,7 +189,7 @@ export default function Dashboard() {
           navigate("/"); // Redirect to login if not authenticated
           return;
         }
-        const response = await fetch("http://192.168.0.106:8000/api/patients", {
+        const response = await fetch("https://triage-ai-api.onrender.com/api/patients", {
           headers: { "worker-id": workerId },
         });
 

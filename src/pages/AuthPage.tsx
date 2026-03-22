@@ -84,7 +84,7 @@ export default function AuthPage() {
     const data = Object.fromEntries(formData);
 
     try {
-      const res = await fetch("http://192.168.0.106:8000/api/register", {
+      const res = await fetch("https://triage-ai-api.onrender.com/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -122,7 +122,7 @@ export default function AuthPage() {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const res = await fetch("http://192.168.0.106:8000/api/login", {
+      const res = await fetch("https://triage-ai-api.onrender.com/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -828,7 +828,7 @@ export default function AuthPage() {
                     e.preventDefault();
                     try {
                       const res = await fetch(
-                        "http://192.168.0.106:8000/api/request-recovery-otp",
+                        "https://triage-ai-api.onrender.com/api/request-recovery-otp",
                         {
                           method: "POST",
                           headers: { "Content-Type": "application/json" },
@@ -874,7 +874,7 @@ export default function AuthPage() {
                     e.preventDefault();
                     try {
                       const res = await fetch(
-                        "http://192.168.0.106:8000/api/verify-otp",
+                        "https://triage-ai-api.onrender.com/api/verify-otp",
                         {
                           method: "POST",
                           headers: { "Content-Type": "application/json" },
@@ -947,7 +947,7 @@ export default function AuthPage() {
                       onClick={async () => {
                         try {
                           const res = await fetch(
-                            "http://192.168.0.106:8000/api/request-recovery-otp",
+                            "https://triage-ai-api.onrender.com/api/request-recovery-otp",
                             {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },
@@ -1000,7 +1000,7 @@ export default function AuthPage() {
                     const formData = new FormData(e.currentTarget);
                     try {
                       const res = await fetch(
-                        "http://192.168.0.106:8000/api/reset-password",
+                        "https://triage-ai-api.onrender.com/api/reset-password",
                         {
                           method: "POST",
                           headers: { "Content-Type": "application/json" },

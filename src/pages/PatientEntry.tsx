@@ -180,7 +180,7 @@ export default function PatientEntry() {
         return;
       }
 
-      const response = await fetch("http://192.168.0.106:8000/api/triage/analyze", {
+      const response = await fetch("https://triage-ai-api.onrender.com/api/triage/analyze", {
         method: "POST",
         headers: { "worker-id": workerId }, // ADD THIS HEADER
         body: formDataToSend,
