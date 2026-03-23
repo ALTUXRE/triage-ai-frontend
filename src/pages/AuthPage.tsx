@@ -84,18 +84,21 @@ export default function AuthPage() {
     const data = Object.fromEntries(formData);
 
     try {
-      const res = await fetch("https://triage-ai-api.onrender.com/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data["register-name"],
-          location: data["register-location"],
-          phone: data["register-phone-hidden"],
-          password: data["register-pass-hidden"],
-          security_question: data["security-question"],
-          security_answer: data["security-answer"],
-        }),
-      });
+      const res = await fetch(
+        "https://triage-ai-api.onrender.com/api/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.get("register-name"), // Grabs "Arihan Pattanaik"
+            location: formData.get("register-location"), // Grabs "Khordha"
+            phone: formData.get("register-phone-hidden"), // Grabs the actual phone number
+            password: formData.get("register-pass-hidden"), // Grabs the actual password
+            security_question: formData.get("security-question"),
+            security_answer: formData.get("security-answer"),
+          }),
+        },
+      );
 
       if (res.ok) {
         setIsRegistering(false);
