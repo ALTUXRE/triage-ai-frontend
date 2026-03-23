@@ -461,7 +461,7 @@ export default function AuthPage() {
                       <input
                         required
                         type="text"
-                        name="register-phone-hidden"
+                        name="register-name"
                         autoComplete="new-password"
                         className="w-full pl-11 pr-4 py-2.5 bg-slate-50/80 border border-slate-200 rounded-xl text-[13px] sm:text-sm font-semibold text-slate-900 focus:bg-white focus:ring-[2px] focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 shadow-sm"
                         placeholder="Full Name"
@@ -478,7 +478,7 @@ export default function AuthPage() {
                       <input
                         required
                         type="text"
-                        name="register-pass-hidden"
+                        name="register-location"
                         autoComplete="nope"
                         className="w-full pl-11 pr-4 py-2.5 bg-slate-50/80 border border-slate-200 rounded-xl text-[13px] sm:text-sm font-semibold text-slate-900 focus:bg-white focus:ring-[2px] focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 shadow-sm"
                         placeholder="Location / District"
@@ -495,7 +495,7 @@ export default function AuthPage() {
                       <input
                         required
                         type="tel"
-                        name="register-phone"
+                        name="register-phone-hidden"
                         autoComplete="off"
                         className="w-full pl-11 pr-4 py-2.5 bg-slate-50/80 border border-slate-200 rounded-xl text-[13px] sm:text-sm font-semibold text-slate-900 focus:bg-white focus:ring-[2px] focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 shadow-sm"
                         placeholder="Mobile Number"
@@ -512,7 +512,7 @@ export default function AuthPage() {
                       <input
                         required
                         type="password"
-                        name="register-password"
+                        name="register-pass-hidden"
                         autoComplete="new-password"
                         className="w-full pl-11 pr-4 py-2.5 bg-slate-50/80 border border-slate-200 rounded-xl text-[13px] sm:text-sm font-semibold text-slate-900 focus:bg-white focus:ring-[2px] focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 shadow-sm"
                         placeholder="Create Password"
