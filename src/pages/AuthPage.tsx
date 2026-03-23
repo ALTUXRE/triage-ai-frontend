@@ -490,6 +490,28 @@ export default function AuthPage() {
                     autoComplete="off"
                     className="space-y-3.5"
                   >
+                    {/* --- THE AUTOFILL TRAP FOR REGISTRATION --- */}
+                    <div
+                      style={{
+                        width: 0,
+                        height: 0,
+                        overflow: "hidden",
+                        position: "absolute",
+                      }}
+                    >
+                      <input
+                        type="text"
+                        autoComplete="username"
+                        tabIndex={-1}
+                      />
+                      <input
+                        type="password"
+                        autoComplete="current-password"
+                        tabIndex={-1}
+                      />
+                    </div>
+                    {/* ---------------------------------------- */}
+
                     <motion.div
                       variants={itemVariants}
                       className="relative group"
