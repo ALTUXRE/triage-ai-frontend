@@ -310,7 +310,7 @@ export default function Dashboard() {
   const ageGroups = { "0-18": 0, "19-40": 0, "41-60": 0, "60+": 0 };
   timeFilteredPatients.forEach((p) => {
     // Use a realistic default fallback of 35 if age is missing to keep charts populated
-    const age = Number(p.age) || 35;
+    const age = Number(p.age) || 0;
     if (age <= 18) ageGroups["0-18"]++;
     else if (age <= 40) ageGroups["19-40"]++;
     else if (age <= 60) ageGroups["41-60"]++;
@@ -1083,8 +1083,24 @@ export default function Dashboard() {
                             {patient.disease}
                           </div>
                           <p className="text-[9px] sm:text-[10px] text-slate-400 font-bold shrink-0 text-right">
-                            {patient.displayDate ?? patient.date}
-                            {patient.time ? ` • ${patient.time}` : ""}
+                            {/* Explicitly forces the display to Indian Standard Time (IST) */}
+                            {new Date(patient.date).toLocaleDateString(
+                              "en-US",
+                              {
+                                timeZone: "Asia/Kolkata",
+                                month: "short",
+                                day: "numeric",
+                              },
+                            )}
+                            {" • "}
+                            {new Date(patient.date).toLocaleTimeString(
+                              "en-US",
+                              {
+                                timeZone: "Asia/Kolkata",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              },
+                            )}
                           </p>
                         </div>
                       </motion.div>
@@ -1172,8 +1188,7 @@ export default function Dashboard() {
                         {selectedPatient.name}
                       </p>
                       <p className="text-[10px] text-slate-600 font-bold mt-0.5">
-                        {selectedPatient.age || "35"}y •{" "}
-                        {selectedPatient.gender}
+                        {selectedPatient.age}y • {selectedPatient.gender}
                       </p>
                     </div>
                     <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
