@@ -1058,18 +1058,18 @@ export default function Dashboard() {
                               </h4>
                             </div>
 
-                            {/* dramAtically Larger Call Button */}
+                            {/* NEW CALL BUTTON: Only shows for Emergency/Moderate */}
                             {(patient.severity === "Emergency" ||
                               patient.severity === "Moderate") && (
                               <a
                                 href={`tel:${patient.phone}`}
-                                onClick={(e) => e.stopPropagation()} // Prevents the card from opening
-                                // Container: Massively increased to w-16/h-16 (64px) with heavier borders/shadow
-                                className="flex items-center justify-center w-16 h-16 bg-green-50 border-2 border-green-300 text-green-700 rounded-full hover:bg-green-100 hover:text-green-800 transition-all shadow-md shrink-0 focus:ring-4 focus:ring-green-200 outline-none"
-                                title={`Call ${patient.name}`}
+                                onClick={(e) => e.stopPropagation()} // Prevents the card from opening when you click call!
+                                // Increased from w-7/h-7 to w-10/h-10 for a much larger touch target
+                                className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 bg-green-50 border border-green-200 text-green-600 rounded-full hover:bg-green-100 hover:text-green-700 transition-colors shadow-sm shrink-0"
+                                title="Call Patient"
                               >
-                                {/* Icon: Significantly increased to w-7/h-7 (28px) */}
-                                <Phone className="w-7 h-7" />
+                                {/* Increased the icon size from w-3 to w-5 */}
+                                <Phone className="w-5 h-5" />
                               </a>
                             )}
                           </div>
