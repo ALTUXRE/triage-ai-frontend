@@ -368,6 +368,29 @@ export default function AuthPage() {
                     autoComplete="off"
                     className="space-y-4"
                   >
+                    {/* --- THE AUTOFILL TRAP --- */}
+                    {/* Chrome will dump the saved data here instead of your real inputs */}
+                    <div
+                      style={{
+                        width: 0,
+                        height: 0,
+                        overflow: "hidden",
+                        position: "absolute",
+                      }}
+                    >
+                      <input
+                        type="text"
+                        autoComplete="username"
+                        tabIndex={-1}
+                      />
+                      <input
+                        type="password"
+                        autoComplete="current-password"
+                        tabIndex={-1}
+                      />
+                    </div>
+                    {/* ------------------------- */}
+
                     <motion.div
                       variants={itemVariants}
                       className="relative group"
@@ -382,7 +405,7 @@ export default function AuthPage() {
                         required
                         type="tel"
                         name="login-phone-hidden"
-                        autoComplete="new-password"
+                        autoComplete="off"
                         className="w-full pl-11 pr-4 py-3 bg-slate-50/80 border border-slate-200 rounded-xl text-[13px] sm:text-sm font-semibold text-slate-900 focus:bg-white focus:ring-[2px] focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 shadow-sm"
                         placeholder="Enter Mobile Number"
                       />
@@ -412,7 +435,7 @@ export default function AuthPage() {
                         required
                         type="password"
                         name="login-pass-hidden"
-                        autoComplete="nope"
+                        autoComplete="new-password"
                         className="w-full pl-11 pr-4 py-3 bg-slate-50/80 border border-slate-200 rounded-xl text-[13px] sm:text-sm font-semibold text-slate-900 focus:bg-white focus:ring-[2px] focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 shadow-sm"
                         placeholder="Enter Password"
                       />
