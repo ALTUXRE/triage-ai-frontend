@@ -18,6 +18,8 @@ import {
   Shield,
   Microscope,
   ChevronDown,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 
 const SECURITY_QUESTIONS = [
@@ -47,6 +49,10 @@ export default function AuthPage() {
   );
   const [isSecurityDropdownOpen, setIsSecurityDropdownOpen] = useState(false);
   const [selectedQuestion, setSelectedQuestion] = useState("");
+
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [showRegisterPassword, setShowRegisterPassword] = useState(false);
+  const [showRecoveryPassword, setShowRecoveryPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -419,7 +425,6 @@ export default function AuthPage() {
                         <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
                           Password
                         </label>
-                        {/* Find the Forgot Password button above the password input and change it to this: */}
                         <button
                           type="button"
                           onClick={() => setShowRecovery(true)}
@@ -433,12 +438,23 @@ export default function AuthPage() {
                       </div>
                       <input
                         required
-                        type="password"
+                        type={showLoginPassword ? "text" : "password"}
                         name="login-pass-hidden"
-                        autoComplete="new-password"
-                        className="w-full pl-11 pr-4 py-3 bg-slate-50/80 border border-slate-200 rounded-xl text-[13px] sm:text-sm font-semibold text-slate-900 focus:bg-white focus:ring-[2px] focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 shadow-sm"
+                        autoComplete="off"
+                        className="w-full pl-11 pr-10 py-3 bg-slate-50/80 border border-slate-200 rounded-xl text-[13px] sm:text-sm font-semibold text-slate-900 focus:bg-white focus:ring-[2px] focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 shadow-sm"
                         placeholder="Enter Password"
                       />
+                      <button
+                        type="button"
+                        onClick={() => setShowLoginPassword(!showLoginPassword)}
+                        className="absolute bottom-0 right-0 pr-4 pb-3 flex items-center text-slate-400 hover:text-blue-600 transition-colors focus:outline-none"
+                      >
+                        {showLoginPassword ? (
+                          <EyeOff className="h-4 w-4" />
+                        ) : (
+                          <Eye className="h-4 w-4" />
+                        )}
+                      </button>
                     </motion.div>
 
                     <motion.button
@@ -534,12 +550,25 @@ export default function AuthPage() {
                       </div>
                       <input
                         required
-                        type="password"
+                        type={showRegisterPassword ? "text" : "password"}
                         name="register-pass-hidden"
-                        autoComplete="new-password"
-                        className="w-full pl-11 pr-4 py-2.5 bg-slate-50/80 border border-slate-200 rounded-xl text-[13px] sm:text-sm font-semibold text-slate-900 focus:bg-white focus:ring-[2px] focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 shadow-sm"
+                        autoComplete="off"
+                        className="w-full pl-11 pr-10 py-2.5 bg-slate-50/80 border border-slate-200 rounded-xl text-[13px] sm:text-sm font-semibold text-slate-900 focus:bg-white focus:ring-[2px] focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 shadow-sm"
                         placeholder="Create Password"
                       />
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setShowRegisterPassword(!showRegisterPassword)
+                        }
+                        className="absolute bottom-0 right-0 pr-4 pb-2.5 flex items-center text-slate-400 hover:text-blue-600 transition-colors focus:outline-none"
+                      >
+                        {showRegisterPassword ? (
+                          <EyeOff className="h-4 w-4" />
+                        ) : (
+                          <Eye className="h-4 w-4" />
+                        )}
+                      </button>
                     </motion.div>
 
                     {/* Custom Interactive Security Question Dropdown */}
@@ -1076,18 +1105,33 @@ export default function AuthPage() {
                       placeholder="Type your answer"
                     />
                   </div>
-                  <div className="space-y-1.5">
+                  <div className="space-y-1.5 relative">
                     <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">
                       Create New Password
                     </label>
-                    <input
-                      required
-                      name="new-password"
-                      type="password"
-                      autoComplete="new-password"
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:ring-[2px] focus:ring-indigo-500/20 focus:border-indigo-500 outline-none shadow-sm transition-all"
-                      placeholder="Enter a new password"
-                    />
+                    <div className="relative">
+                      <input
+                        required
+                        name="new-password"
+                        type={showRecoveryPassword ? "text" : "password"}
+                        autoComplete="off"
+                        className="w-full pl-4 pr-10 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:ring-[2px] focus:ring-indigo-500/20 focus:border-indigo-500 outline-none shadow-sm transition-all"
+                        placeholder="Enter a new password"
+                      />
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setShowRecoveryPassword(!showRecoveryPassword)
+                        }
+                        className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-indigo-600 transition-colors focus:outline-none"
+                      >
+                        {showRecoveryPassword ? (
+                          <EyeOff className="h-4 w-4" />
+                        ) : (
+                          <Eye className="h-4 w-4" />
+                        )}
+                      </button>
+                    </div>
                   </div>
                   <button
                     type="submit"
