@@ -1084,6 +1084,24 @@ export default function AuthPage() {
                   }}
                   className="space-y-4"
                 >
+                  {/* --- THE AUTOFILL TRAP FOR RECOVERY --- */}
+                  <div
+                    style={{
+                      width: 0,
+                      height: 0,
+                      overflow: "hidden",
+                      position: "absolute",
+                    }}
+                  >
+                    <input type="text" autoComplete="username" tabIndex={-1} />
+                    <input
+                      type="password"
+                      autoComplete="current-password"
+                      tabIndex={-1}
+                    />
+                  </div>
+                  {/* -------------------------------------- */}
+
                   <div className="space-y-1.5 mb-2">
                     <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">
                       Security Question
