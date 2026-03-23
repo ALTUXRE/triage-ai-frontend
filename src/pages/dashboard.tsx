@@ -189,9 +189,12 @@ export default function Dashboard() {
           navigate("/"); // Redirect to login if not authenticated
           return;
         }
-        const response = await fetch("https://triage-ai-api.onrender.com/api/patients", {
-          headers: { "worker-id": workerId },
-        });
+        const response = await fetch(
+          "https://triage-ai-api.onrender.com/api/patients",
+          {
+            headers: { "worker-id": workerId },
+          },
+        );
 
         if (response.ok) {
           const data = await response.json();
@@ -301,7 +304,7 @@ export default function Dashboard() {
 
   const pieDataGender = [
     { name: "Male", value: maleCount, color: "#3b82f6" },
-    { name: "Female", value: femaleCount, color: "#ec4899" }
+    { name: "Female", value: femaleCount, color: "#ec4899" },
   ];
 
   const ageGroups = { "0-18": 0, "19-40": 0, "41-60": 0, "60+": 0 };
@@ -1055,16 +1058,18 @@ export default function Dashboard() {
                               </h4>
                             </div>
 
-                            {/* NEW CALL BUTTON: Only shows for Emergency/Moderate */}
+                            {/* dramAtically Larger Call Button */}
                             {(patient.severity === "Emergency" ||
                               patient.severity === "Moderate") && (
                               <a
                                 href={`tel:${patient.phone}`}
-                                onClick={(e) => e.stopPropagation()} // Prevents the card from opening when you click call!
-                                className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-green-50 border border-green-200 text-green-600 rounded-full hover:bg-green-100 hover:text-green-700 transition-colors shadow-sm shrink-0"
-                                title="Call Patient"
+                                onClick={(e) => e.stopPropagation()} // Prevents the card from opening
+                                // Container: Massively increased to w-16/h-16 (64px) with heavier borders/shadow
+                                className="flex items-center justify-center w-16 h-16 bg-green-50 border-2 border-green-300 text-green-700 rounded-full hover:bg-green-100 hover:text-green-800 transition-all shadow-md shrink-0 focus:ring-4 focus:ring-green-200 outline-none"
+                                title={`Call ${patient.name}`}
                               >
-                                <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                                {/* Icon: Significantly increased to w-7/h-7 (28px) */}
+                                <Phone className="w-7 h-7" />
                               </a>
                             )}
                           </div>
